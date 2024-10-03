@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "opolo-shop:build:production"
+              "buildTarget": "opolo-shop:build:production"
             },
             "development": {
-              "browserTarget": "opolo-shop:build:development"
+              "buildTarget": "opolo-shop:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "opolo-shop:build"
+            "buildTarget": "opolo-shop:build"
           }
         },
         "test": {
