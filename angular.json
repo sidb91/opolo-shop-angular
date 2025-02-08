@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "opolo-shop": {
+    "opolo-shop-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/opolo-shop",
+            "outputPath": "dist/opolo-shop-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -50,7 +50,7 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
+            "dev": {
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -65,18 +65,18 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "opolo-shop:build:production"
+              "buildTarget": "opolo-shop-angular:build:production"
             },
-            "development": {
-              "buildTarget": "opolo-shop:build:development"
+            "dev": {
+              "buildTarget": "opolo-shop-angular:build:dev"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "dev"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "opolo-shop:build"
+            "buildTarget": "opolo-shop-angular:build"
           }
         },
         "test": {

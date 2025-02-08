@@ -3,10 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run opolo:dev",
+    "build": "concurrently \"npm run lint\" \"npm run opolo:build:dev\"",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "tests": "ng test --watch=false --browsers=ChromeHeadless",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "npm run lint -- --fix",
+    "compodoc": "npx compodoc -p tsconfig.doc.json",
+    "concat:mock": "node \"./json-server/config/concat-json.js\"",
+    "install:local": "npm install ../../../lib/msal-angular ../../../lib/msal-browser",
+    "jsonServer": "npm run concat:mock && json-server json-server/db.json --routes json-server/config/routes.json --port 3000",
+    "opolo:dev": "concurrently --kill-others \"npm run jsonServer\" \"ng serve --configuration=dev\"",
+    "opolo:prod": "ng serve --configuration production",
+    "opolo:build:dev": "ng build --configuration dev",
+    "opolo:build:prod": "ng build --configuration production"
   },
   "private": true,
   "dependencies": {
@@ -22,11 +33,17 @@
     "@ngrx/entity": "^17.2.0",
     "@ngrx/router-store": "^17.2.0",
     "@ngrx/store": "^17.2.0",
+    "@ngrx/store-devtools": "^18.0.2",
     "concurrently": "^9.0.1",
-    "json-server": "^1.0.0-beta.3",
+    "json-concat": "^0.0.1",
+    "json-server": "^0.17.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.10"
+    "zone.js": "~0.14.10",
+    "primeflex":"3.1.2",
+    "primeicons": "6.0.1",
+    "primeng":"15.4.1",
+    "uuid":"^9.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.10",
