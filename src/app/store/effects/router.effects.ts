@@ -1,15 +1,18 @@
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Location } from '@angular/common';
+import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs';
 
 import * as RouterActions from './../actions/router.action';
-import { Location } from '@angular/common';
 
+@Injectable()
 export class RouterEffects {
+
   constructor(
-    private action$: Actions,
-    private router: Router,
-    private location: Location
+    readonly action$: Actions,
+    readonly router: Router,
+    readonly location: Location
   ) {}
 
   navigate$ = createEffect(

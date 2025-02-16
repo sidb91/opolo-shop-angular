@@ -1,11 +1,10 @@
 
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Params, RouterStateSnapshot } from '@angular/router';
 import * as fromRouter from '@ngrx/router-store';
 import { createFeatureSelector, ActionReducerMap } from '@ngrx/store';
 
 import { RouterStateUrl } from '../../shared-services/models/router-state.interface';
-
 
 export interface State {
     routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;

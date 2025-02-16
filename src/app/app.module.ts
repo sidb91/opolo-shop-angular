@@ -19,9 +19,14 @@ import { OpoloSpinnerComponent } from './app-components/opolo-spinner/opolo-spin
 import { environment } from 'src/environments/environment';
 
 import { CustomSerializer, reducers } from './store/reducers';
-import { HttpHeaderInterceptor } from './shared-services/interceptors/http-header.interceptors';
 import { effects } from './store/effects';
+import { reducer } from './application/store/reducers/workspace-details.reducer';
+
+import { HttpHeaderInterceptor } from './shared-services/interceptors/http-header.interceptors';
 import { CommonComponentsModule } from './common-components/common-components.module';
+import { FeatureModuleNames } from './app-services/enum/feature-names.enum';
+import { AuthModule } from './auth/auth.module';
+import { LandingPageComponent } from './app-components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,7 @@ import { CommonComponentsModule } from './common-components/common-components.mo
     OpoloGlobalErrorComponent,
     OpoloSpinnerComponent,
     OpoloServiceFailureComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,7 @@ import { CommonComponentsModule } from './common-components/common-components.mo
     AppRoutingModule,
     HttpClientModule,
     CommonComponentsModule,
-    EffectsModule.forRoot([]),
+    AuthModule,
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
         strictStateImmutability: true,
@@ -46,11 +52,13 @@ import { CommonComponentsModule } from './common-components/common-components.mo
       },
     }),
     StoreDevtoolsModule.instrument({
+      name: "App Devtools",
       maxAge: 25,
-      logOnly: environment.production,
+      logOnly: environment.production
     }),
-    // EffectsModule.forRoot(effects),
-    StoreRouterConnectingModule.forRoot(),
+    EffectsModule.forRoot(effects),
+    StoreModule.forFeature(FeatureModuleNames.applications, reducer),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [
     { provide: RouterStateSerializer, useClass: CustomSerializer },

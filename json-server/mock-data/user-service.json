@@ -1,12 +1,4 @@
 {
-    "customerDetails": {
-        "firstName": "Sid",
-        "lastName": "Opolo",
-        "customerId": "12345",
-        "email": "abc@test.com",
-        "mobile": "7675889054"
-    }
-,
     "userDetails": {
         "id":"101",
         "firstName": "John",
