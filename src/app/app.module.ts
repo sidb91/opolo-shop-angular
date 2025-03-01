@@ -12,10 +12,14 @@ import {
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CommonComponentsModule } from './common-components/common-components.module';
+import { AuthModule } from './auth/auth.module';
+
 import { AppComponent } from './app-components/root/app.component';
 import { OpoloGlobalErrorComponent } from './app-components/opolo-global-error/opolo-global-error.component';
 import { OpoloServiceFailureComponent } from './app-components/opolo-service-failure/opolo-service-failure.component';
 import { OpoloSpinnerComponent } from './app-components/opolo-spinner/opolo-spinner.component';
+
 import { environment } from 'src/environments/environment';
 
 import { CustomSerializer, reducers } from './store/reducers';
@@ -23,10 +27,9 @@ import { effects } from './store/effects';
 import { reducer } from './application/store/reducers/workspace-details.reducer';
 
 import { HttpHeaderInterceptor } from './shared-services/interceptors/http-header.interceptors';
-import { CommonComponentsModule } from './common-components/common-components.module';
 import { FeatureModuleNames } from './app-services/enum/feature-names.enum';
-import { AuthModule } from './auth/auth.module';
-import { LandingPageComponent } from './app-components/landing-page/landing-page.component';
+
+import { LandingPageContainer } from './app-containers/landing-page/landing-page.container';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,7 @@ import { LandingPageComponent } from './app-components/landing-page/landing-page
     OpoloGlobalErrorComponent,
     OpoloSpinnerComponent,
     OpoloServiceFailureComponent,
-    LandingPageComponent
+    LandingPageContainer
   ],
   imports: [
     BrowserModule,

@@ -1,28 +1,8 @@
-import { UserProfileInf } from "@app/app-services/api-services/user-service.interface";
 import { Action } from "@ngrx/store";
 
-export interface AccountInfo {
-    username: string;
-    useremail: string;
-    name: string;
-    isAuthenticated: boolean;
-    hasValidRole: boolean;
-    accountPayload : {
-        homeAccountId: string;
-        environment: string;
-        tenantId: string;
-        username: string;
-        localAccountId: string;
-        name: string;
-        authorityType: string;
-        tenantProfiles: string;
-        idTokenClaims : {
-            name: string;
-            preferred_username: string;
-            roles: string[]
-        };
-    }
-}
+import { LoginDetailsInf } from "@app/app-services/api-services/login-services/login-service.interface";
+import { UserProfileInf } from "@app/app-services/api-services/user-service/user-service.interface";
+
 
 //Login actions
 export const LOGIN = '[Auth] Login';
@@ -37,7 +17,7 @@ export class Login implements Action {
 
 export class LoginSuccess implements Action {
     readonly type = LOGIN_SUCCESS;
-    constructor(public payload: AccountInfo){}
+    constructor(public payload: LoginDetailsInf){}
 }
 
 export class LoginFail implements Action {

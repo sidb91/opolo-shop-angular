@@ -1,31 +1,30 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { map } from "rxjs";
+import { catchError, map, of, switchMap } from "rxjs";
 
-import { AccountInfo } from "./../actions/auth.action";
 import * as fromAuthStore from "./../../store";
-import * as fromSharedStore from "./../../../shared-services/store";
+import { LoginService } from "@app/app-services/api-services/login-services/login.service";
 
 @Injectable()
 export class LoginEffects {
 
     constructor(readonly store: Store<any>,
-        readonly actions$: Actions
+        readonly actions$: Actions,
+        readonly loginService: LoginService
     ){}
 
     loginEffects$ = createEffect(() => this.actions$.pipe(
-        ofType(fromAuthStore.LOGIN_SUCCESS),
+        ofType(fromAuthStore.LOGIN),
         map((action: fromAuthStore.AuthActions) => action.payload),
-        map(
-            (response: AccountInfo) => {
-                this.store.dispatch(
-                    new fromAuthStore.FetchUserProfile(response?.username)
-                );
-                return new fromSharedStore.NoAction();
-            }
-        )
-    ), { dispatch: false })
+        switchMap(([payload]) => {
+            
+            return this.loginService.getLoginDetails(payload).pipe(
+                map(response => new fromAuthStore.LoginSuccess(response)),
+                catchError(error => of(new fromAuthStore.LoginFail(error)))
+            );
+        })
+    ))
 
 
 

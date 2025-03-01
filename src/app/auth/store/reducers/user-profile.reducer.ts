@@ -1,6 +1,6 @@
 import * as fromAuthActions from './../actions';
 
-import { UserProfileInf } from "@app/app-services/api-services/user-service.interface";
+import { UserProfileInf } from "@app/app-services/api-services/user-service/user-service.interface";
 
 export interface UserProfileState{
     data: UserProfileInf;

@@ -6,6 +6,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 
 import { reducers, effects } from "./store";
+import { LoginService } from "@app/app-services/api-services/login-services/login.service";
 
 
 @NgModule({
@@ -13,6 +14,6 @@ import { reducers, effects } from "./store";
         StoreModule.forFeature(FeatureModuleNames.auth, reducers),
         EffectsModule.forFeature(effects)
     ],
-    providers:[]
+    providers:[LoginService]
 })
 export class AuthModule{}

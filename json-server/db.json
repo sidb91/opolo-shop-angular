@@ -7,17 +7,25 @@
         "mobile": "7675889054"
     }
 ,
+    "loginDetails": {
+        "roles": ["OPOLO_SYSTEM_ADMIN"],
+        "userEmail": "john.doe@test.com",
+        "userName": "John",
+        "isAuthenticated": true,
+        "hasValidRole": true,
+        "loading": false,
+        "loaded": true,
+        "error": false,
+        "accountPayload": ""
+    }
+,
     "userDetails": {
         "id":"101",
-        "firstName": "John",
-        "lastName": "Doe",
-        "customerId": "123455678",
-        "email": "john.doe@test.com",
-        "mobile": "7772341234",
-        "user_role_group": {
-            "id":1,
-            "user_role_group_name":"SYSTEM_ADMIN",
-            "user_role_group_description": "System Administrators"
-        }
+        "user_id": "JK101",
+        "first_name": "John",
+        "last_name": "Doe",
+        "manager": true,
+        "servicenow_ticket_number":"12345",
+        "user_email": "john.doe@test.com"
     }
 }

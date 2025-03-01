@@ -1,0 +1,13 @@
+{
+    "loginDetails": {
+        "roles": ["OPOLO_SYSTEM_ADMIN"],
+        "userEmail": "john.doe@test.com",
+        "userName": "John",
+        "isAuthenticated": true,
+        "hasValidRole": true,
+        "loading": false,
+        "loaded": true,
+        "error": false,
+        "accountPayload": ""
+    }
+}

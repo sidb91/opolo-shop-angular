@@ -41,11 +41,12 @@ export function reducer(
         }
 
         case fromLoginActions.LOGIN_SUCCESS: {
-            
-            const roles = action.payload?.accountPayload.idTokenClaims.roles;
-            const userEmail = action.payload?.useremail;
-            const userName = action.payload?.name;
+
+            const roles = action.payload?.roles;
+            const userEmail = action.payload?.userEmail;
+            const userName = action.payload?.userName;
             const isAuthenticated = action.payload?.isAuthenticated;
+            const hasValidRole = action.payload?.hasValidRole;
             const accountPayload = action.payload.accountPayload;
 
             return {
@@ -54,6 +55,7 @@ export function reducer(
                 userEmail,
                 userName,
                 isAuthenticated,
+                hasValidRole,
                 loading: false,
                 loaded: true,
                 error: false,

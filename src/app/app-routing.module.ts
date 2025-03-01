@@ -1,14 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LandingPageComponent } from './app-components/landing-page/landing-page.component';
+import { LandingPageContainer } from './app-containers/landing-page/landing-page.container';
+import { PAGES } from './app-services/enum/page-path.enum';
+import { OpoloGlobalErrorComponent } from './app-components/opolo-global-error/opolo-global-error.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: LandingPageComponent,
+    component: LandingPageContainer,
     canActivate: []
-  } 
+  },
+  {
+    path: PAGES.dashboard,
+    component: LandingPageContainer,
+    canActivate: []
+  },
+  {
+    path: PAGES.pageError,
+    component: OpoloGlobalErrorComponent,
+    data: { breadcrumb: null}
+  }
 ];
 
 @NgModule({
